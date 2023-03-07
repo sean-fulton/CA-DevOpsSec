@@ -14,8 +14,8 @@ workflows:
             branches:
               only:
                 - master
-              requires:
-                - build
+          requires:
+            - build
 
 jobs:
   build:
@@ -36,12 +36,12 @@ jobs:
           key: dependency-cache-{{ checksum "package-lock.json"}}
           paths:
             - ./node_modules
-    deploy:
-      docker:
-        - image:circleci/node:10.16.3
-      steps:
-        - run:
-            name: deploy-application
-            command: ssh -o StrictHostKeyChecking=no $EC2_USERNAME@EC2_PUBLIC_DNS "rm -rf CA-DevOpsSec/;git clone https://github.com/sean-fulton/CA-DevOpsSec.git; source CA-DevOpsSec/deploy.sh"
+  deploy:
+    docker:
+      - image: circleci/node:10.16.3
+    steps:
+      - run:
+          name: deploy-application
+          command: ssh -o StrictHostKeyChecking=no $EC2_USERNAME@EC2_PUBLIC_DNS "rm -rf CA-DevOpsSec/;git clone https://github.com/sean-fulton/CA-DevOpsSec.git; source CA-DevOpsSec/deploy.sh"
 
 
