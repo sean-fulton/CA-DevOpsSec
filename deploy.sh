@@ -5,6 +5,8 @@ sudo npm install -g pm2
 
 pm2 stop simple_app
 
+cd CA-DevOpsSec
+
 npm install
 
 pm2 start ./bin/www --name simple_app
