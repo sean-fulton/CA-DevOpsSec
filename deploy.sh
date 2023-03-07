@@ -9,4 +9,7 @@ cd CA-DevOpsSec
 
 npm install
 
+echo $PRIVATE_KEY > privatekey.pem
+echo $SERVER > server.crt
+
 pm2 start ./bin/www --name simple_app
