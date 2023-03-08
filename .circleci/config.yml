@@ -4,12 +4,7 @@ workflows:
   version: 2
   build: 
     jobs:
-      - build:
-          filters:
-            branches:
-              ignore:
-                - no_ci
-
+      - build
       - deploy:
           filters:
             branches:
