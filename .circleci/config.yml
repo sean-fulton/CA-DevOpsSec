@@ -7,8 +7,9 @@ workflows:
       - build:
           filters:
             branches:
-              only:
-                - master
+              ignore:
+                - no_ci
+
       - deploy:
           filters:
             branches:
